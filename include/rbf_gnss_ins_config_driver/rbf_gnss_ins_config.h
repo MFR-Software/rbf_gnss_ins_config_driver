@@ -74,6 +74,7 @@ private:
             double align_velocity_threshold; ///< Velocity threshold for alignment.
             std::vector<std::string> ins_initial_attitude; ///< Initial attitude for INS.
             std::vector<std::string> ins_initial_attitude_error; ///< Initial attitude error for INS.
+            std::vector<std::string> ins_device_installation_angle; ///< INS Device Installation Angle.
             std::vector<std::string> lever_arm_master; ///< Lever arm for master.
             std::vector<std::string> lever_arm_slave; ///< Lever arm for slave.
             std::vector<std::string> lever_arm_master_error; ///< Lever arm error for master.

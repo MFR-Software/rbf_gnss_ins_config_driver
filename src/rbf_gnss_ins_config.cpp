@@ -51,6 +51,7 @@ namespace rbf_gnss_ins_config_driver{
         config_.ins_config.align_velocity_threshold = declare_parameter<double>("ins_config.align_velocity_threshold", 0.1);
         config_.ins_config.ins_initial_attitude = declare_parameter<std::vector<std::string>>("ins_config.ins_initial_attitude", {"0.0", "0.0", "0.0"});
         config_.ins_config.ins_initial_attitude_error = declare_parameter<std::vector<std::string>>("ins_config.ins_initial_attitude_error", {"0.0", "0.0", "0.0"});
+        config_.ins_config.ins_device_installation_angle = declare_parameter<std::vector<std::string>>("ins_config.ins_device_installation_angle", {"0", "0", "0"});
         config_.ins_config.lever_arm_master = declare_parameter<std::vector<std::string>>("ins_config.lever_arm_master", {"0.0", "0.0", "0.0"});
         config_.ins_config.lever_arm_slave = declare_parameter<std::vector<std::string>>("ins_config.lever_arm_slave", {"0.0", "0.0", "0.0"});
         config_.ins_config.lever_arm_master_error = declare_parameter<std::vector<std::string>>("ins_config.lever_arm_master_error", {"0.0", "0.0", "0.0"});
@@ -61,6 +62,7 @@ namespace rbf_gnss_ins_config_driver{
         
         boost::split(config_.ins_config.ins_initial_attitude, config_.ins_config.ins_initial_attitude[0], boost::is_any_of(" "));
         boost::split(config_.ins_config.ins_initial_attitude_error, config_.ins_config.ins_initial_attitude_error[0], boost::is_any_of(" "));
+        boost::split(config_.ins_config.ins_device_installation_angle, config_.ins_config.ins_device_installation_angle[0], boost::is_any_of(" "));
         boost::split(config_.ins_config.lever_arm_master, config_.ins_config.lever_arm_master[0], boost::is_any_of(" "));
         boost::split(config_.ins_config.lever_arm_slave, config_.ins_config.lever_arm_slave[0], boost::is_any_of(" "));
         boost::split(config_.ins_config.lever_arm_master_error, config_.ins_config.lever_arm_master_error[0], boost::is_any_of(" "));
@@ -110,6 +112,7 @@ namespace rbf_gnss_ins_config_driver{
         RCLCPP_INFO(get_logger(), "Align Velocity Threshold: %f", config_.ins_config.align_velocity_threshold);
         RCLCPP_INFO(get_logger(), "INS Initial Attitude: %s %s %s", config_.ins_config.ins_initial_attitude[0].c_str(), config_.ins_config.ins_initial_attitude[1].c_str(), config_.ins_config.ins_initial_attitude[2].c_str());
         RCLCPP_INFO(get_logger(), "INS Initial Attitude Error: %s %s %s", config_.ins_config.ins_initial_attitude_error[0].c_str(), config_.ins_config.ins_initial_attitude_error[1].c_str(), config_.ins_config.ins_initial_attitude_error[2].c_str());
+        RCLCPP_INFO(get_logger(), "INS Device Installation Angle: %s %s %s", config_.ins_config.ins_device_installation_angle[0].c_str(), config_.ins_config.ins_device_installation_angle[1].c_str(), config_.ins_config.ins_device_installation_angle[2].c_str());
         RCLCPP_INFO(get_logger(), "Lever Arm Master: %s %s %s", config_.ins_config.lever_arm_master[0].c_str(), config_.ins_config.lever_arm_master[1].c_str(), config_.ins_config.lever_arm_master[2].c_str());
         RCLCPP_INFO(get_logger(), "Lever Arm Slave: %s %s %s", config_.ins_config.lever_arm_slave[0].c_str(), config_.ins_config.lever_arm_slave[1].c_str(), config_.ins_config.lever_arm_slave[2].c_str());
         RCLCPP_INFO(get_logger(), "Lever Arm Master Error: %s %s %s", config_.ins_config.lever_arm_master_error[0].c_str(), config_.ins_config.lever_arm_master_error[1].c_str(), config_.ins_config.lever_arm_master_error[2].c_str());
@@ -172,6 +175,11 @@ namespace rbf_gnss_ins_config_driver{
         config_.ins_config.ins_initial_attitude_error[0] + " " +
         config_.ins_config.ins_initial_attitude_error[1] + " " +
         config_.ins_config.ins_initial_attitude_error[2] + "\r\n";
+        commands_.push_back(command);
+
+        command = "config ins angle " + config_.ins_config.ins_device_installation_angle[0] + " " +
+        config_.ins_config.ins_device_installation_angle[1] + " " +
+        config_.ins_config.ins_device_installation_angle[2] + "\r\n";
         commands_.push_back(command);
         
         command = "config imutoant offset " + config_.ins_config.lever_arm_master[0] + " " + 
