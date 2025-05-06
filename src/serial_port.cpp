@@ -188,6 +188,13 @@ int SerialPort::read(char *buffer, int buffer_size)
     return 0;
 }
 
+void SerialPort::flush() {
+    if (tcflush(fd_, TCIOFLUSH) != 0) {
+        throw SerialPortException("error flushing serial port buffer.");
+    }
+}
+
+
 void SerialPort::close()
 {
     if (fd_ != -1)
