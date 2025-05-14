@@ -6,7 +6,7 @@
 
     port1_config:
       rawimu_period: 0.01 #rawimu msg period 0.01(100 Hz)(recommended) 0.02(50 Hz) 0.05(20 Hz) 0.1(10 Hz) 0.2(5 Hz) 1(1 Hz) 0.00(not publish)
-      inspvax_period: 0.02 #0.02(50 Hz) 0.05(recommended)(20 Hz) 0.1(10 Hz) 0.2(5 Hz) 1(1 Hz) 0.00(not publish)
+      inspvax_period: 0.05 #0.02(50 Hz) 0.05(recommended)(20 Hz) 0.1(10 Hz) 0.2(5 Hz) 1(1 Hz) 0.00(not publish)
       uniheading_period: 0.2 #0.2(recommended)(5 Hz) 1(1 Hz) 0.00(not publish)
       bestgnsspos_period: 0.2 #0.2(recommended)(5 Hz) 1(1 Hz) 0.00(not publish)
       bestgnssvel_period: 0.2 #0.2(recommended)(5 Hz) 1(1 Hz) 0.00(not publish)
@@ -38,9 +38,8 @@
       align_velocity_threshold: 0.5 #(m/s) default 0.5 set the velocity threshold for INS alignment, in m/s.
       ins_initial_attitude: [0.0 0.0 0.0] # (degree)(pitch,roll,yaw) default [0.0 0.0 0.0] set the initial attitude of the INS device, in degrees.
       ins_initial_attitude_error: [0.0002778 0.0002778 0.0002778] # (degree)(pitch,roll,yaw) default [0.0002778 0.0002778 0.0002778] set the initial attitude error of the INS device, in degrees. [0.0002778, 45]
-      ins_device_installation_angle: [0 0 9000] # (degree)(X,Y,Z) default [0.0 0.0 0.0] set the installation angle of the INS device, in degrees. unit: 0.01 degree,
-      lever_arm_master: [0.0 0.0 0.0] # (m)(x,y,z)default [0.0 0.0 0.0] set the lever arm of the master antenna relative to the IMU, in meters.
-      lever_arm_slave:  [0.0 0.0 0.0] # (m)(x,y,z) default [0.0 0.0 0.0] set the lever arm of the slave antenna relative to the IMU, in meters.
+      lever_arm_master: [-0.02 -0.482 0.02] # (m)(x,y,z)default [0.0 0.0 0.0] set the lever arm of the master antenna relative to the IMU, in meters.
+      lever_arm_slave:  [-0.02 0.628 0.02] # (m)(x,y,z) default [0.0 0.0 0.0] set the lever arm of the slave antenna relative to the IMU, in meters.
       lever_arm_master_error: [0.01 0.01 0.01] # (m)(x,y,z) default [0.01 0.01 0.01] set the lever arm error of the master antenna relative to the IMU, in meters.
       lever_arm_slave_error: [0.01 0.01 0.01] # (m)(x,y,z) default [0.01 0.01 0.01] set the lever arm error of the slave antenna relative to the IMU, in meters.
       imu_position_offset: [0.0 0.0 0.0] #(m)(x,y,z) default [0.0 0.0 0.0]set the position offsets of IMU, when INS osition and velocity are output
